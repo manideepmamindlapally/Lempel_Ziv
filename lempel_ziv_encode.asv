@@ -23,7 +23,7 @@ function [code]=lempel_ziv_encode(SEQUENCE, DICTIONARY_SIZE, X)
                 new_code = [ones(1,floor(l)+1)*'0' dec2bin(l) ones(1,floor(n)+1)*'0' dec2bin(n)];
             end
             new_code_length = size(new_code,2);
-            code = [code new_code];
+            code(code = [code new_code];
             ptr = ptr + pos + 1;
             lengths = zeros(1,DICTIONARY_SIZE);
             pos=0;
