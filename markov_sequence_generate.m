@@ -1,6 +1,5 @@
 function [seq]= markov_sequence_generate(X, T, p_0, n)
-    [xtra, M] = size(X);
-    seq = [];
+    seq = ' '*ones(1,n);
     
     k = 0;
     p=rand;
@@ -11,6 +10,7 @@ function [seq]= markov_sequence_generate(X, T, p_0, n)
     seq(1) = X(1,k);
     k_prev = k;
     
+    % Monte carlo Method
     for i=2:n
         p = rand;
         k = 0;

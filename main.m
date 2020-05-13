@@ -17,9 +17,29 @@ seq = fscanf(fID,'%c');
 fclose(fID);
 
 %%======================== Encoding using Lempel Zev ===================
-% [lempel_code, lempel_code_length] = lempel_ziv_encode(seq, DICTIONARY_SIZE, X);
-dlmwrite('lempel_ziv_coded_seq.txt', char(lempel_code(1,1:lempel_code_length)), 'delimiter', '');
+[lempel_code, lempel_code_length] = lempel_ziv_encode(seq, DICTIONARY_SIZE, X);
+% dlmwrite('lempel_ziv_coded_seq.txt', char(lempel_code(1,1:lempel_code_length)), 'delimiter', '');
 
 %%======================== Encoding using Huffman =======================
-% [huff_code, huff_code_length] = huffman_markov(seq,X,T);
-dlmwrite('huffman_markov_coded_seq.txt', char(huff_code(1,1:huff_code_length)), 'delimiter', '');
+[huff_steady_code, huff_steady_code_length] = huffman_steady_state(seq,X,T);
+% dlmwrite('huffman_steady_coded_seq.txt', char(huff_steady_code(1,1:huff_steady_code_length)), 'delimiter', '');
+
+[huff_markov_code, huff_markov_code_length] = huffman_markov(seq,X,T);
+% dlmwrite('huffman_markov_coded_seq.txt', char(huff_markov_code(1,1:huff_markov_code_length)), 'delimiter', '');
+
+%%======================== RESULTS =====================================
+% Toggle the comments for the results
+% % Entropy of steady state probablity distribution
+% markov_h_pi(T)
+% 
+% % Markov entropy of steady state
+% markov_h_inf(T)
+% 
+% % Compression_ratio of Lempel Ziv coding
+% lempel_code_length / seq_length
+% 
+% % Compression ratio of steady state Huffman coding
+% huff_steady_code_length / seq_length
+% 
+% % Compression ratio of markov Huffman coding
+% huff_markov_code_length / seq_length

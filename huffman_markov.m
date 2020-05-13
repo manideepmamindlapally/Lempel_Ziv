@@ -4,7 +4,7 @@ function [code, code_length] = huffman_markov(seq, X, T)
     HUFFMAN_TABLE = strings(M);
     INDICES = 1:M;
     for i=1:M
-        HUFFMAN_TABLE(i,:) = huffman(T(i,:),INDICES,M);
+        HUFFMAN_TABLE(i,:) = huffman(T(i,:),INDICES);
     end
 
     code = ' '*ones(1,5*seq_length);
